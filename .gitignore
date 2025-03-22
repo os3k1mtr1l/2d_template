@@ -43,6 +43,7 @@ Makefile
 *.out
 *.app
 
-# Exclude vendor folder
+# Exclude folders
 !vendor/
 !vendor/premake5/*.exe
+!libs/
