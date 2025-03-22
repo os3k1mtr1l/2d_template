@@ -10,9 +10,6 @@ Makefile
 *.vcxproj.*
 *.sln
 
-# Exclude vendor folder
-!vendor/premake5/*.exe
-
 # Prerequisites
 *.d
 
@@ -45,3 +42,7 @@ Makefile
 *.exe
 *.out
 *.app
+
+# Exclude vendor folder
+!vendor/
+!vendor/premake5/*.exe
