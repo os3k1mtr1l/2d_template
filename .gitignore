@@ -3,12 +3,15 @@
 bin/
 obj/
 
-#Project files
+# Project files
 Makefile
 *.make
 *.vcxproj
 *.vcxproj.*
 *.sln
+
+# Exclude vendor folder
+!vendor/premake5/*.exe
 
 # Prerequisites
 *.d
