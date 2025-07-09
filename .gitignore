@@ -2,6 +2,9 @@
 .vs/
 bin/
 obj/
+*.cfg
+.vscode/
+.idea/
 
 # Project files
 Makefile

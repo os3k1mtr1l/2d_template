@@ -18,9 +18,15 @@ project "2D_Template"
 
     filter "action:gmake"
         libdirs { "libs/binaries/mingw" }
-    
+        postbuildcommands {
+            "{COPY} libs/binaries/mingw/raylib.dll bin/%{cfg.buildcfg}"
+        }
+
     filter "action:vs*"
         libdirs { "libs/binaries/msvc" }
+        postbuildcommands {
+            "{COPY} libs/binaries/msvc/raylib.dll bin/%{cfg.buildcfg}"
+        }
 
     filter "configurations:Debug"
         defines { "DEBUG" }
@@ -29,7 +35,3 @@ project "2D_Template"
     filter "configurations:Release"
         defines { "NDEBUG" }
         optimize "On"
-
-    postbuildcommands {
-        "{COPY} libs/binaries/mingw/raylib.dll bin/%{cfg.buildcfg}"
-    }
