@@ -14,18 +14,18 @@ project "2D_Template"
 
     files { "src/header/*.h", "src/*.cpp" }
     links { "raylib", "gdi32", "winmm", "opengl32" }
-    includedirs { "libs/includes" }
+    includedirs { "third_party/libs/includes" }
 
     filter "action:gmake"
-        libdirs { "libs/binaries/mingw" }
+        libdirs { "third_party/libs/binaries/mingw" }
         postbuildcommands {
-            "{COPY} libs/binaries/mingw/raylib.dll bin/%{cfg.buildcfg}"
+            "{COPY} third_party/libs/binaries/mingw/raylib.dll bin/%{cfg.buildcfg}"
         }
 
     filter "action:vs*"
-        libdirs { "libs/binaries/msvc" }
+        libdirs { "third_party/libs/binaries/msvc" }
         postbuildcommands {
-            "{COPY} libs/binaries/msvc/raylib.dll bin/%{cfg.buildcfg}"
+            "{COPY} third_party/libs/binaries/msvc/raylib.dll bin/%{cfg.buildcfg}"
         }
 
     filter "configurations:Debug"
