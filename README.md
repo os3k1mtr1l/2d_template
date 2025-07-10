@@ -7,10 +7,26 @@ A simple template for creating **2D games or applications** using [Raylib](https
 This project is designed **exclusively for Windows (64-bit)** and supports **MinGW (GCC)** and **MSVC (Visual Studio)** compilers.  
 It primarily uses the **C++17** standard.
 
+## Clone
+
+This repository uses a submodule that contains all third-party dependencies required for the project to work.
+
+To clone the repository with submodules, use:
+```bash
+git clone --recurse-submodules https://github.com/os3k1mtr1l/2d_template
+```
+
+If you already cloned the repository without the --recurse-submodules flag, run the following inside the project directory:
+```bash
+git submodule update --init --recursive
+```
+
+You can find the submodule repository here [\*click\*](https://github.com/os3k1mtr1l/game_third_party_module)
+
 ## Building
 
 Before building the project, you need to generate the project files using **Premake5**.  
-You can find `premake5` in the [`vendor/`](vendor/) folder or download it from the official [website](https://premake.github.io/) or [GitHub releases](https://github.com/premake/premake-core).  
+You can find `premake5` in the `vendor/` folder or download it from the official [website](https://premake.github.io/) or [GitHub releases](https://github.com/premake/premake-core).  
 
 ### Generating project files
 Open `cmd` or PowerShell and navigate to the folder containing `premake5.lua`, then run:
