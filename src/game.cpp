@@ -1,4 +1,5 @@
 #include"header/game.h"
+#include<rlImGui.h>
 
 void Game::initResources()
 {
@@ -23,12 +24,14 @@ Game::Game()
 
     SetTargetFPS(m_ConfigManager.GetConfig().fps);
 
+    rlImGuiSetup(true);
     initResources();
     initGameAttributes();
 }
 
 Game::~Game()
 {
+    rlImGuiShutdown();
     UnloadRenderTexture(m_scene);
     CloseWindow();
 }

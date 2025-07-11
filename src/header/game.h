@@ -1,5 +1,5 @@
 #pragma once
-#include<raylib/raylib.h>
+#include<raylib.h>
 #include"config.h"
 
 class Game

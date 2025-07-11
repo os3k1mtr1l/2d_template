@@ -1,7 +1,7 @@
 #include"header/config.h"
 #include<iostream>
 #include<fstream>
-#include<raylib/raylib.h>
+#include<raylib.h>
 #include<memory.h>
 
 ConfigManager::ConfigManager()
