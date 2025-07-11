@@ -62,5 +62,8 @@ After a successful build, the compiled binaries will be located in the `bin/` fo
 ## Third party
 This project uses the following dependencies:
 
-- [**Premake5**](https://github.com/premake/premake-core/blob/master/LICENSE.txt) – for project file generation.  
-- [**Raylib**](https://github.com/raysan5/raylib/blob/master/LICENSE) – the main rendering and game engine library.
+- [**Premake5**](https://github.com/premake/premake-core) – for project file generation.  
+- [**Raylib**](https://github.com/raysan5/raylib) – the main rendering and game engine library.
+- [**nlohmann/json**](https://github.com/nlohmann/json) – a modern C++ JSON parser. Used for handling configurations, localization data, and more.
+- [**Dear ImGui**](https://github.com/ocornut/imgui) – a fast, self-contained immediate-mode GUI system for debugging tools, editors, and development interfaces.
+- [**rlImGui**](https://github.com/raylib-extras/rlImGui) – Raylib-specific backend for `Dear ImGui`.
