@@ -7,7 +7,6 @@ project "ImGui"
     kind "StaticLib"
     language "C++"
     cppdialect "C++17"
-    staticruntime "on"
 
     includedirs {
         "third_party/libs/includes/imgui",
@@ -21,6 +20,14 @@ project "ImGui"
 		"third_party/libs/includes/rlimgui/*.cpp",
         "third_party/libs/includes/rlimgui/*.h"
     }
+
+    filter "configurations:Debug"
+        runtime "Debug"
+        symbols "On"
+
+    filter "configurations:Release"
+        runtime "Release"
+        optimize "On"
 
 project "2D_Template"
     kind "ConsoleApp"
