@@ -3,6 +3,25 @@ workspace "2D_Template"
     configurations { "Debug", "Release" }
     platforms { "Win64" }
 
+project "ImGui"
+    kind "StaticLib"
+    language "C++"
+    cppdialect "C++17"
+    staticruntime "on"
+
+    includedirs {
+        "third_party/libs/includes/imgui",
+        "third_party/libs/includes/rlimgui",
+		"third_party/libs/includes/raylib"
+    }
+
+    files {
+        "third_party/libs/includes/imgui/*.cpp",
+        "third_party/libs/includes/imgui/*.h",
+		"third_party/libs/includes/rlimgui/*.cpp",
+        "third_party/libs/includes/rlimgui/*.h"
+    }
+
 project "2D_Template"
     kind "ConsoleApp"
     language "C++"
@@ -13,8 +32,8 @@ project "2D_Template"
     objdir "obj/%{cfg.buildcfg}"
 
     files { "src/header/*.h", "src/*.cpp" }
-    links { "raylib", "gdi32", "winmm", "opengl32" }
-    includedirs { "third_party/libs/includes" }
+    links { "raylib", "gdi32", "winmm", "opengl32", "ImGui" }
+    includedirs { "third_party/libs/includes/*" }
 
     filter "action:gmake"
         libdirs { "third_party/libs/binaries/mingw" }
