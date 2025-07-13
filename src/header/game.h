@@ -10,7 +10,7 @@ class Game
         void Run();
 
     private:
-        void initResources();
+        void initResources(uint16_t config_width, uint16_t config_height);
         void initGameAttributes();
 
         void update();
@@ -19,6 +19,5 @@ class Game
         void drawScene() const;
         void composeFrame() const;
 
-        ConfigManager m_ConfigManager;
         RenderTexture2D m_scene;
 };

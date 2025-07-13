@@ -19,8 +19,8 @@ void Game::drawScene() const
 
         DrawText(
             "2D Template",
-            m_ConfigManager.GetConfig().windowWidth / 2 - width / 2,
-            m_ConfigManager.GetConfig().windowHeight / 2 - fontSize / 2,
+            ConfigManager::GetConfig().windowWidth / 2 - width / 2,
+            ConfigManager::GetConfig().windowHeight / 2 - fontSize / 2,
             fontSize,
             color);
         framesCounter++;

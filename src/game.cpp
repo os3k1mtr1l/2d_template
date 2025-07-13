@@ -1,9 +1,9 @@
 #include"header/game.h"
 #include<rlImGui.h>
 
-void Game::initResources()
+void Game::initResources(uint16_t config_width, uint16_t config_height)
 {
-    m_scene = LoadRenderTexture(m_ConfigManager.GetConfig().windowWidth, m_ConfigManager.GetConfig().windowHeight);
+    m_scene = LoadRenderTexture(config_width, config_height);
 }
 
 void Game::initGameAttributes()
@@ -14,18 +14,23 @@ void Game::initGameAttributes()
 Game::Game()
 {
     InitWindow(0, 0, "2D Template");
-    m_ConfigManager.LoadConfig("config.cfg");
+    ConfigManager::LoadConfig("config.json");
 
     int monitor = GetCurrentMonitor();
+    uint16_t config_width = ConfigManager::GetConfig().windowWidth;
+    uint16_t config_height = ConfigManager::GetConfig().windowHeight;
+    
     SetWindowMinSize(800, 600);
     SetWindowMaxSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
-    SetWindowSize(m_ConfigManager.GetConfig().windowWidth, m_ConfigManager.GetConfig().windowHeight);
-    SetWindowPosition(GetMonitorWidth(monitor) / 2 - m_ConfigManager.GetConfig().windowWidth / 2, GetMonitorHeight(monitor) / 2 - m_ConfigManager.GetConfig().windowHeight / 2);
+    
+    SetWindowSize(config_width, config_height);
 
-    SetTargetFPS(m_ConfigManager.GetConfig().fps);
+    SetWindowPosition(GetMonitorWidth(monitor) / 2 - config_width / 2, GetMonitorHeight(monitor) / 2 - config_height / 2);
+
+    SetTargetFPS(ConfigManager::GetConfig().fps);
 
     rlImGuiSetup(true);
-    initResources();
+    initResources(config_width, config_height);
     initGameAttributes();
 }
 

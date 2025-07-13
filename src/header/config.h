@@ -9,6 +9,7 @@ struct Config
     uint16_t windowWidth;
     uint16_t windowHeight;
     uint8_t fps;
+    bool fullscreen;
 };
 
 #pragma pack(pop)
@@ -16,12 +17,12 @@ struct Config
 class ConfigManager
 {
     public:
-        ConfigManager();
-
-        void LoadConfig(const std::filesystem::path& path);
-        void SaveConfig(const std::filesystem::path& path);
-        const Config& GetConfig() const;
+        static void LoadConfig(const std::filesystem::path& path);
+        static void LoadConfig();
+        static void SaveConfig(const std::filesystem::path& path);
+        static const Config& GetConfig();
 
     private:
-        Config m_Config;
+        static Config s_config;
+        static bool s_is_initialized;
 };
