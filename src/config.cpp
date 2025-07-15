@@ -40,9 +40,9 @@ void ConfigManager::SaveConfig(const std::filesystem::path& path)
     }
     
     json j;
-    j["window"]["width"] = s_config.windowWidth;
-    j["window"]["height"] = s_config.windowHeight;
-    j["window"]["fps"] = s_config.fps;
+    j["window"]["width"]      = s_config.windowWidth;
+    j["window"]["height"]     = s_config.windowHeight;
+    j["window"]["fps"]        = s_config.fps;
     j["window"]["fullscreen"] = s_config.fullscreen;
 
     file << j.dump(4);
@@ -71,22 +71,24 @@ void ConfigManager::LoadConfig(const std::filesystem::path& path)
         json j;
         file >> j;
         
-        s_config.windowWidth = j["window"].value("width", s_config.windowWidth);
+        s_config.windowWidth   = j["window"].value("width", s_config.windowWidth);
         s_config.windowHeight  = j["window"].value("height", s_config.windowHeight);
-        s_config.fps          = j["window"].value("fps", s_config.fps);
-        s_config.fullscreen   = j["window"].value("fullscreen", s_config.fullscreen);
+        s_config.fps           = j["window"].value("fps", s_config.fps);
+        s_config.fullscreen    = j["window"].value("fullscreen", s_config.fullscreen);
     }
     
-    TraceLog(LOG_INFO, "CONFIG: Loaded config:\n" \
-                "\tWIDTH: %d\n"\
-                "\tHEIGHT: %d\n"\
-                "\tFPS: %d\n"\
-                "\tFULLSCREEN: %s"\
-                ,
-                s_config.windowWidth,
-                s_config.windowHeight,
-                s_config.fps,
-                s_config.fullscreen? "true" : "false"
-            );
+    TraceLog(
+LOG_INFO,
+  "CONFIG: Loaded config:\n" \
+        "\tWIDTH: %d\n"\
+        "\tHEIGHT: %d\n"\
+        "\tFPS: %d\n"\
+        "\tFULLSCREEN: %s"\
+        ,
+        s_config.windowWidth,
+        s_config.windowHeight,
+        s_config.fps,
+        s_config.fullscreen? "true" : "false"
+    );
     file.close();
 }

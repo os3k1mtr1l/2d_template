@@ -13,24 +13,29 @@ void Game::initGameAttributes()
 
 Game::Game()
 {
-    InitWindow(0, 0, "2D Template");
     ConfigManager::LoadConfig("config.json");
+    const Config& cfg = ConfigManager::GetConfig();
 
+    SetConfigFlags(cfg.fullscreen? FLAG_FULLSCREEN_MODE : 0);
+    InitWindow(cfg.windowWidth, cfg.windowHeight, "2D Template");
+    
     int monitor = GetCurrentMonitor();
-    uint16_t config_width = ConfigManager::GetConfig().windowWidth;
-    uint16_t config_height = ConfigManager::GetConfig().windowHeight;
     
     SetWindowMinSize(800, 600);
     SetWindowMaxSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
     
-    SetWindowSize(config_width, config_height);
-
-    SetWindowPosition(GetMonitorWidth(monitor) / 2 - config_width / 2, GetMonitorHeight(monitor) / 2 - config_height / 2);
+    if(!cfg.fullscreen)
+    {
+        SetWindowPosition(
+            GetMonitorWidth(monitor) / 2 - cfg.windowWidth / 2,
+            GetMonitorHeight(monitor) / 2 - cfg.windowHeight / 2
+        );
+    }
 
     SetTargetFPS(ConfigManager::GetConfig().fps);
 
     rlImGuiSetup(true);
-    initResources(config_width, config_height);
+    initResources(cfg.windowWidth, cfg.windowHeight);
     initGameAttributes();
 }
 

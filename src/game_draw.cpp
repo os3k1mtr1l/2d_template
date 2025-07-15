@@ -22,7 +22,8 @@ void Game::drawScene() const
             ConfigManager::GetConfig().windowWidth / 2 - width / 2,
             ConfigManager::GetConfig().windowHeight / 2 - fontSize / 2,
             fontSize,
-            color);
+            color
+        );
         framesCounter++;
 
         DrawFPS(10, 10);
@@ -45,7 +46,8 @@ void Game::composeFrame() const
             m_scene.texture,
             {0, 0, static_cast<float>(m_scene.texture.width), static_cast<float>(-m_scene.texture.height)},
             {0, 0},
-            WHITE);
+            WHITE
+        );
     }
     rlImGuiEnd();
     EndDrawing();
