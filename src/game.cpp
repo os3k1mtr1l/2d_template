@@ -32,7 +32,7 @@ Game::Game()
         );
     }
 
-    SetTargetFPS(ConfigManager::GetConfig().fps);
+    SetTargetFPS(cfg.fps);
 
     rlImGuiSetup(true);
     initResources(cfg.windowWidth, cfg.windowHeight);
